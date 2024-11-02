@@ -1,0 +1,13 @@
+*.class
+*.log
+.idea
+*.iml
+pom.xml.versionsBackup
+
+out/
+target/
+build/
+
+*~
+*.gpg.enc
+.gradle/
