@@ -26,3 +26,5 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
