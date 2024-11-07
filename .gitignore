@@ -11,4 +11,4 @@ build/
 *~
 *.gpg.enc
 .gradle/
-secret.key
+openai.key

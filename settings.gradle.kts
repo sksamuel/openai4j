@@ -1,3 +1,13 @@
+pluginManagement {
+  plugins {
+    kotlin("jvm") version "2.0.20"
+  }
+}
+
+plugins {
+  id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
+}
+
 rootProject.name = "openai4j"
 
 include(
@@ -18,6 +28,8 @@ dependencyResolutionManagement {
       create("libs") {
          val vertx = "4.5.10"
          library("vertx-core", "io.vertx:vertx-core:$vertx")
+         library("vertx-web-client", "io.vertx:vertx-web-client:$vertx")
+
       }
    }
 }
