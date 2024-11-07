@@ -7,7 +7,7 @@ import io.kotest.matchers.shouldBe
 class ListModelsTest : FunSpec() {
    init {
       test("list models") {
-         val openai = VertxOpenAIClient(javaClass.getResourceAsStream("/openai.key").bufferedReader().readText().trim())
+         val openai = VertxOpenAIClient(apiKey)
          val models = openai.listModels().get()
          models.data.size shouldBe 20
          models.data.forOne {

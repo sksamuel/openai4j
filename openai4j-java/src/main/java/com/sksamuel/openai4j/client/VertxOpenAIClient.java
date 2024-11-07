@@ -37,17 +37,28 @@ public class VertxOpenAIClient implements OpenAIClient {
    }
 
    @Override
-   public CompletableFuture<V1ModelsResponse> listModels() {
+   public CompletableFuture<ModelsResponseV1> listModels() {
       return client
          .request(HttpMethod.GET, createRequestOptions("/v1/models"))
          .send()
          .toCompletionStage()
          .toCompletableFuture()
-         .thenApply(response -> marshall(response, V1ModelsResponse.class));
+         .thenApply(response -> marshall(response, ModelsResponseV1.class));
+   }
+
+   @Override
+   public CompletableFuture<EmbeddingsResponseV1> createEmbedding(EmbeddingsRequestV1 request) {
+      return client
+         .request(HttpMethod.POST, createRequestOptions("/v1/embeddings"))
+         .sendJson(request)
+         .toCompletionStage()
+         .toCompletableFuture()
+         .thenApply(response -> marshall(response, EmbeddingsResponseV1.class));
    }
 
    private <T> T marshall(HttpResponse<Buffer> response, Class<T> type) {
       try {
+         System.out.println(response.bodyAsString());
          return mapper.readValue(response.bodyAsBuffer().getBytes(), type);
       } catch (IOException e) {
          throw new RuntimeException(e);
