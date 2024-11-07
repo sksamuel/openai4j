@@ -11,3 +11,4 @@ build/
 *~
 *.gpg.enc
 .gradle/
+secret.key
