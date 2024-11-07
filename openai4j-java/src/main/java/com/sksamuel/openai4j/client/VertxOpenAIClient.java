@@ -1,7 +1,10 @@
 package com.sksamuel.openai4j.client;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import io.vertx.core.Vertx;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpHeaders;
@@ -30,6 +33,7 @@ public class VertxOpenAIClient implements OpenAIClient {
       this.vertx = vertx;
       this.mapper = new ObjectMapper();
       this.mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+      this.mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
       this.client =
          WebClient.create(vertx, new WebClientOptions()
             .setTryUseCompression(true));
@@ -54,6 +58,17 @@ public class VertxOpenAIClient implements OpenAIClient {
          .toCompletionStage()
          .toCompletableFuture()
          .thenApply(response -> marshall(response, EmbeddingsResponseV1.class));
+   }
+
+   @Override
+   public CompletableFuture<ChatCompletionResponseV1> chatCompletion(ChatCompletionRequestV1 request) throws JsonProcessingException {
+      return client
+         .request(HttpMethod.POST, createRequestOptions("/v1/chat/completions"))
+         .putHeader(HttpHeaders.CONTENT_TYPE.toString(), "application/json")
+         .sendBuffer(Buffer.buffer(mapper.writeValueAsBytes(request)))
+         .toCompletionStage()
+         .toCompletableFuture()
+         .thenApply(response -> marshall(response, ChatCompletionResponseV1.class));
    }
 
    private <T> T marshall(HttpResponse<Buffer> response, Class<T> type) {
