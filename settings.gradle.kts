@@ -11,7 +11,7 @@ plugins {
 rootProject.name = "openai4j"
 
 include(
-   ":openai4j-java",
+   ":openai4j-client",
 )
 
 enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
