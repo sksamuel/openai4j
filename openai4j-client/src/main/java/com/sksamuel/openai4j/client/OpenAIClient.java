@@ -19,4 +19,6 @@ public interface OpenAIClient {
    CompletableFuture<ListFilesResponseV1> listFiles(ListFilesRequestV1 request) throws JsonProcessingException;
 
    CompletableFuture<File> retrieveFile(String fileId) throws JsonProcessingException;
+
+   CompletableFuture<CreateModerationResponseV1> createModeration(CreateModerationRequestV1 request) throws JsonProcessingException;
 }
