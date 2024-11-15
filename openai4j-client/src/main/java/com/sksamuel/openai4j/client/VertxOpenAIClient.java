@@ -92,6 +92,20 @@ public class VertxOpenAIClient implements OpenAIClient {
          .thenApply(response -> marshall(response, CreateImageVariationResponseV1.class));
    }
 
+   @Override
+   public CompletableFuture<ListFilesResponseV1> listFiles(ListFilesRequestV1 request) throws JsonProcessingException {
+      return client
+         .request(HttpMethod.GET, createRequestOptions("/v1/files"))
+         .addQueryParam("purpose", request.purpose())
+         .addQueryParam("purposes", request.purpose())
+         .addQueryParam("order", request.order())
+         .addQueryParam("after", request.after())
+         .sendBuffer(Buffer.buffer(mapper.writeValueAsBytes(request)))
+         .toCompletionStage()
+         .toCompletableFuture()
+         .thenApply(response -> marshall(response, ListFilesResponseV1.class));
+   }
+
    private <T> T marshall(HttpResponse<Buffer> response, Class<T> type) {
       try {
          System.out.println(response.bodyAsString());
