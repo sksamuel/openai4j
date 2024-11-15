@@ -17,4 +17,6 @@ public interface OpenAIClient {
    CompletableFuture<CreateImageVariationResponseV1> createImageVariation(CreateImageVariationRequestV1 request) throws JsonProcessingException;
 
    CompletableFuture<ListFilesResponseV1> listFiles(ListFilesRequestV1 request) throws JsonProcessingException;
+
+   CompletableFuture<File> retrieveFile(String fileId) throws JsonProcessingException;
 }

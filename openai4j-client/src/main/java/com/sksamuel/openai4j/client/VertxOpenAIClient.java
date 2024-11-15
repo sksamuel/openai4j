@@ -100,10 +100,22 @@ public class VertxOpenAIClient implements OpenAIClient {
          .addQueryParam("purposes", request.purpose())
          .addQueryParam("order", request.order())
          .addQueryParam("after", request.after())
-         .sendBuffer(Buffer.buffer(mapper.writeValueAsBytes(request)))
+         .send()
          .toCompletionStage()
          .toCompletableFuture()
          .thenApply(response -> marshall(response, ListFilesResponseV1.class));
+   }
+
+   @Override
+   public CompletableFuture<File> retrieveFile(String fileId) throws JsonProcessingException {
+      return client
+         .request(HttpMethod.GET, createRequestOptions("""
+            /v1/files/${fileId}
+            """))
+         .send()
+         .toCompletionStage()
+         .toCompletableFuture()
+         .thenApply(response -> marshall(response, File.class));
    }
 
    private <T> T marshall(HttpResponse<Buffer> response, Class<T> type) {
