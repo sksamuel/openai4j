@@ -11,4 +11,8 @@ public interface OpenAIClient {
    CompletableFuture<EmbeddingsResponseV1> createEmbedding(EmbeddingsRequestV1 request);
 
    CompletableFuture<ChatCompletionResponseV1> chatCompletion(ChatCompletionRequestV1 request) throws JsonProcessingException;
+
+   CompletableFuture<CreateImageResponseV1> createImage(CreateImageRequestV1 request) throws JsonProcessingException;
+
+   CompletableFuture<CreateImageVariationResponseV1> createImageVariation(CreateImageVariationRequestV1 request) throws JsonProcessingException;
 }

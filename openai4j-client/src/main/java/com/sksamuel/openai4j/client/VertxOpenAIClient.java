@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import io.vertx.core.Vertx;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpHeaders;
@@ -69,6 +68,28 @@ public class VertxOpenAIClient implements OpenAIClient {
          .toCompletionStage()
          .toCompletableFuture()
          .thenApply(response -> marshall(response, ChatCompletionResponseV1.class));
+   }
+
+   @Override
+   public CompletableFuture<CreateImageResponseV1> createImage(CreateImageRequestV1 request) throws JsonProcessingException {
+      return client
+         .request(HttpMethod.POST, createRequestOptions("/v1/images/generations"))
+         .putHeader(HttpHeaders.CONTENT_TYPE.toString(), "application/json")
+         .sendBuffer(Buffer.buffer(mapper.writeValueAsBytes(request)))
+         .toCompletionStage()
+         .toCompletableFuture()
+         .thenApply(response -> marshall(response, CreateImageResponseV1.class));
+   }
+
+   @Override
+   public CompletableFuture<CreateImageVariationResponseV1> createImageVariation(CreateImageVariationRequestV1 request) throws JsonProcessingException {
+      return client
+         .request(HttpMethod.POST, createRequestOptions("/v1/images/variations"))
+         .putHeader(HttpHeaders.CONTENT_TYPE.toString(), "multipart/form-data")
+         .sendBuffer(Buffer.buffer(mapper.writeValueAsBytes(request)))
+         .toCompletionStage()
+         .toCompletableFuture()
+         .thenApply(response -> marshall(response, CreateImageVariationResponseV1.class));
    }
 
    private <T> T marshall(HttpResponse<Buffer> response, Class<T> type) {
