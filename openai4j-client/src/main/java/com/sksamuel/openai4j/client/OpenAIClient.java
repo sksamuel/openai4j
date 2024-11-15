@@ -21,4 +21,6 @@ public interface OpenAIClient {
    CompletableFuture<File> retrieveFile(String fileId) throws JsonProcessingException;
 
    CompletableFuture<CreateModerationResponseV1> createModeration(CreateModerationRequestV1 request) throws JsonProcessingException;
+
+   CompletableFuture<DeleteFineTunedModelResponseV1> deleteFineTunedModel(String model) throws JsonProcessingException;
 }
