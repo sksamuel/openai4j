@@ -5,13 +5,13 @@ completion, images, emebddings, voice based on Vert.x.
 
 ## Supported Endpoints
 
-Models: [https://platform.openai.com/docs/api-reference/models/list](listModels), [https://platform.openai.com/docs/api-reference/models/retrieve](retrieveModel)
-Chat Completions: [https://platform.openai.com/docs/api-reference/chat/create](createChatCompletion)
-Images: createImage, createImageEdit, createImageVariation
-Embeddings: createEmbeddings
-Files: listFiles, deleteFile, retrieveFile
-Fine-tunes: deleteFineTuneModel
-Moderations: createModeration
+* Models: [https://platform.openai.com/docs/api-reference/models/list](listModels), [https://platform.openai.com/docs/api-reference/models/retrieve](retrieveModel)
+* Chat Completions: [https://platform.openai.com/docs/api-reference/chat/create](createChatCompletion)
+* Images: createImage, createImageEdit, createImageVariation
+* Embeddings: createEmbeddings
+* Files: listFiles, deleteFile, retrieveFile
+* Fine-tunes: deleteFineTuneModel
+* Moderations: createModeration
 
 ## Getting Started
 
@@ -21,7 +21,7 @@ implementation 'com.sksamuel.openai4j:openai4j-client:<version>'
 
 Since all the calls are async they return responses wrapped in `CompletableFuture`'s .
 
-###Contributions
+## Contributions
 
 This project is open-source and welcomes any contribution or feedback
 
