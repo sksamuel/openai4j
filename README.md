@@ -6,11 +6,11 @@
 
 
 Openai4j is a performant async Java client for OpenAI API supporting most of the available endpoints including chat
-completion, images, emebddings, voice based on [https://vertx.io/](Vertx).
+completion, images, emebddings, voice based on [Vertx](https://vertx.io).
 
 ## Supported Endpoints
 
-* Models: [https://platform.openai.com/docs/api-reference/models/list](listModels), [https://platform.openai.com/docs/api-reference/models/retrieve](retrieveModel)
+* Models: [listModel](https://platform.openai.com/docs/api-reference/models/list), [https://platform.openai.com/docs/api-reference/models/retrieve](retrieveModel)
 * Chat Completions: [https://platform.openai.com/docs/api-reference/chat/create](createChatCompletion)
 * Images: createImage, createImageEdit, createImageVariation
 * Embeddings: createEmbeddings
