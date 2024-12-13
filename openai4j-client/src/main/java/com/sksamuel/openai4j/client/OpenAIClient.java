@@ -23,4 +23,6 @@ public interface OpenAIClient {
    CompletableFuture<CreateModerationResponseV1> createModeration(CreateModerationRequestV1 request) throws JsonProcessingException;
 
    CompletableFuture<DeleteFineTunedModelResponseV1> deleteFineTunedModel(String model) throws JsonProcessingException;
+
+   CompletableFuture<DeleteAssistantResponseV1> deleteAssistant(String assistantId) throws JsonProcessingException;
 }

@@ -142,6 +142,17 @@ public class VertxOpenAIClient implements OpenAIClient {
          .thenApply(response -> marshall(response, DeleteFineTunedModelResponseV1.class));
    }
 
+   @Override
+   public CompletableFuture<DeleteAssistantResponseV1> deleteAssistant(String assistantId) throws JsonProcessingException {
+      return client
+         .request(HttpMethod.DELETE, createRequestOptions("/v1/assistants/" + assistantId))
+         .putHeader(HttpHeaders.CONTENT_TYPE.toString(), "application/json")
+         .send()
+         .toCompletionStage()
+         .toCompletableFuture()
+         .thenApply(response -> marshall(response, DeleteAssistantResponseV1.class));
+   }
+
    private <T> T marshall(HttpResponse<Buffer> response, Class<T> type) {
       try {
          System.out.println(response.bodyAsString());
