@@ -10,8 +10,8 @@ completion, images, emebddings, voice based on [Vertx](https://vertx.io).
 
 ## Supported Endpoints
 
-* Models: [listModel](https://platform.openai.com/docs/api-reference/models/list), [https://platform.openai.com/docs/api-reference/models/retrieve](retrieveModel)
-* Chat Completions: [https://platform.openai.com/docs/api-reference/chat/create](createChatCompletion)
+* Models: [listModel](https://platform.openai.com/docs/api-reference/models/list), [retrieveModel](https://platform.openai.com/docs/api-reference/models/retrieve)
+* Chat Completions: [createChatCompletion](https://platform.openai.com/docs/api-reference/chat/create)
 * Images: createImage, createImageEdit, createImageVariation
 * Embeddings: createEmbeddings
 * Files: listFiles, deleteFile, retrieveFile
