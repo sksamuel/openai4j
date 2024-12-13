@@ -1,5 +1,10 @@
 # openai4j
 
+![main](https://github.com/sksamuel/openai4j/workflows/main/badge.svg)
+[<img src="https://img.shields.io/maven-central/v/com.sksamuel.openai4j/aedile-core.svg?label=latest%20release"/>](https://central.sonatype.com/search?q=openai4j)
+[<img src="https://img.shields.io/nexus/s/https/s01.oss.sonatype.org/com.sksamuel.openai4j/openai4j-cclient.svg?label=latest%20snapshot&style=plastic"/>](https://s01.oss.sonatype.org/content/repositories/snapshots/com/sksamuel/openai4j/)
+
+
 Openai4j is a performant async Java client for OpenAI API supporting most of the available endpoints including chat
 completion, images, emebddings, voice based on Vert.x.
 
