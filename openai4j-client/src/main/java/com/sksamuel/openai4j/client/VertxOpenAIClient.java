@@ -109,9 +109,7 @@ public class VertxOpenAIClient implements OpenAIClient {
    @Override
    public CompletableFuture<File> retrieveFile(String fileId) throws JsonProcessingException {
       return client
-         .request(HttpMethod.GET, createRequestOptions("""
-            /v1/files/${fileId}
-            """))
+         .request(HttpMethod.GET, createRequestOptions("/v1/files/" + fileId))
          .send()
          .toCompletionStage()
          .toCompletableFuture()
@@ -132,9 +130,7 @@ public class VertxOpenAIClient implements OpenAIClient {
    @Override
    public CompletableFuture<DeleteFineTunedModelResponseV1> deleteFineTunedModel(String model) throws JsonProcessingException {
       return client
-         .request(HttpMethod.DELETE, createRequestOptions("""
-            /v1/models/${model}
-            """))
+         .request(HttpMethod.DELETE, createRequestOptions("/v1/models/" + model))
          .putHeader(HttpHeaders.CONTENT_TYPE.toString(), "application/json")
          .send()
          .toCompletionStage()
