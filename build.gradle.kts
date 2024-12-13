@@ -5,11 +5,11 @@ plugins {
    kotlin("jvm").apply(false).version("1.9.25")
 }
 
-group = "com.sksamuel.openai4j"
-//version = Ci.version
-
 subprojects {
    apply(plugin = "java")
+
+   group = "com.sksamuel.openai4j"
+   version = Ci.version
 
    java {
       targetCompatibility = JavaVersion.VERSION_21
