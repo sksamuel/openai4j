@@ -5,3 +5,4 @@ public record DeleteAssistantResponseV1(String id,
                                         boolean deleted
 ) {
 }
+
