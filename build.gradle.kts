@@ -27,9 +27,3 @@ subprojects {
 }
 
 val publications: PublicationContainer = (extensions.getByName("publishing") as PublishingExtension).publications
-
-//signing {
-//   useGpgCmd()
-//   if (Ci.isRelease)
-//      sign(publications)
-//}
