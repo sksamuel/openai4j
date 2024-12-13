@@ -22,7 +22,7 @@ completion, images, emebddings, voice based on [Vertx](https://vertx.io).
 
 Add openai4j to your build:
 
-implementation 'com.sksamuel.openai4j:openai4j-client:<version>'
+```implementation 'com.sksamuel.openai4j:openai4j-client:<version>'```
 
 Since all the calls are async they return responses wrapped in `CompletableFuture`'s .
 
