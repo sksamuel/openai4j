@@ -20,3 +20,5 @@ dependencies {
 kotlin {
    jvmToolchain(21)
 }
+
+apply("../publish.gradle.kts")
